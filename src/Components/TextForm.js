@@ -5,31 +5,31 @@ export default function TextForm(props) {
     // console.log("Uppercase was clicked" + text);
     let newText = text.toUpperCase();
     setText(newText);
-    props.showAlert(" Converted to uppercase","success");
+    props.showAlert(" Converted to uppercase", "success");
   }
   const handleLoClick = () => {
     // console.log("Lowercase was clicked" + text);
     let newText = text.toLowerCase();
     setText(newText);
-    props.showAlert(" Converted to lowercase","success");
+    props.showAlert(" Converted to lowercase", "success");
   }
   const handleClearClick = () => {
     // let newText = '';
     //setText(newText)
     setText("");
-    props.showAlert(" Cleared the input box","success");
+    props.showAlert(" Cleared the input box", "success");
   }
   const handleOnChange = (event) => {
     setText(event.target.value);
   }
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
-    props.showAlert(" Copied to the clipboard!","success");
+    props.showAlert(" Copied to the clipboard!", "success");
   }
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
-    props.showAlert(" Removed extra spaces","success");
+    props.showAlert(" Removed extra spaces", "success");
   }
   const [text, setText] = useState("");
 
@@ -46,12 +46,12 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-2 my-2" onClick={handleLoClick}>Convert to Lowercase</button>
         <button className="btn btn-primary mx-2 my-2" onClick={handleClearClick}>Clear</button>
         <button className="btn btn-primary mx-2 my-2" onClick={handleCopy}>Copy</button>
-        <button className="btn btn-primary mx-2 my-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button> 
+        <button className="btn btn-primary mx-2 my-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
       </div>
       <div className="container my-2" style={{ color: props.mode === 'dark' ? 'white' : '#00060e' }}>
         <h1>Your text summary</h1>
         {/* <p>{text.split(" ")[text.split(" ").length - 1] === "" ? text.split(" ").length - 1 : text.split(" ").length} words and {text.length} characters</p>  */}
-        <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} word and {text.length} characters</p>
+        <p>{text.split(" ").filter((element) => { return element.length !== 0 }).length} word and {text.length} characters</p>
         <p>{0.008 * text.split(" ").length}Minutes taken to read</p> {/*Time taken to read*/}
         <h3>Preview</h3>
         <p>{text.length > 0 ? text : "Enter something to preview"}</p>
