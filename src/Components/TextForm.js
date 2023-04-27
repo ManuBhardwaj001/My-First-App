@@ -42,19 +42,19 @@ export default function TextForm(props) {
         <div className="mb-3">
           <textarea className="form-control" value={text} onChange={handleOnChange} style={{ backgroundColor: props.mode === 'dark' ? '#00060e' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }} id="mybox" rows="10" ></textarea>
         </div>
-        <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>Convert to Uppercase</button>
-        <button className="btn btn-primary mx-2 my-2" onClick={handleLoClick}>Convert to Lowercase</button>
-        <button className="btn btn-primary mx-2 my-2" onClick={handleClearClick}>Clear</button>
-        <button className="btn btn-primary mx-2 my-2" onClick={handleCopy}>Copy</button>
-        <button className="btn btn-primary mx-2 my-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>Convert to Uppercase</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleLoClick}>Convert to Lowercase</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleClearClick}>Clear</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleCopy}>Copy</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
       </div>
       <div className="container my-2" style={{ color: props.mode === 'dark' ? 'white' : '#00060e' }}>
         <h1>Your text summary</h1>
         {/* <p>{text.split(" ")[text.split(" ").length - 1] === "" ? text.split(" ").length - 1 : text.split(" ").length} words and {text.length} characters</p>  */}
         <p>{text.split(" ").filter((element) => { return element.length !== 0 }).length} word and {text.length} characters</p>
-        <p>{0.008 * text.split(" ").length}Minutes taken to read</p> {/*Time taken to read*/}
+        <p>{0.008 * text.split(" ").filter((element) => { return element.length !== 0 }).length} Minutes taken to read</p> {/*Time taken to read*/}
         <h3>Preview</h3>
-        <p>{text.length > 0 ? text : "Enter something to preview"}</p>
+        <p>{text.length > 0 ? text : "Your text preview will come here"}</p>
       </div>
     </>
   )
